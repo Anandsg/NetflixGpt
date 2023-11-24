@@ -1,11 +1,13 @@
 import React, { useRef, useState } from "react";
 import { checkValidateData } from "../utils/validation";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../utils/firebase";
 
 const Login = () => {
     const [isSigninForm, setIsSignInForm] = useState(true);
     const [errorMessage, setErrorMessage] = useState(null);
 
-    const name = useRef(null);
+    // const name = useRef(null);
     const email = useRef(null);
     const password = useRef(null);
 
@@ -13,10 +15,29 @@ const Login = () => {
     const handleValidationBtn = () => {
         // console.log(email.current.value);
         // console.log(password.current.value);
-
-        const message = checkValidateData(name.current.value, email.current.value, password.current.value);
+        // const nameValue = name.current ? name.current.value : null
+        const message = checkValidateData(email.current.value, password.current.value);
         setErrorMessage(message);
-    }
+        if (message) return;
+
+        if (!isSigninForm) {
+            // Sign up logic
+            createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+                .then((userCredential) => {
+                    // Signed up 
+                    const user = userCredential.user;
+                    console.log(user);
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    setErrorMessage(errorCode + "-" + errorMessage);
+                });
+        } else {
+            // Sign in logic
+        }
+    };
+
     const toggleSigninForm = () => {
         setIsSignInForm(!isSigninForm)
     }
@@ -30,9 +51,9 @@ const Login = () => {
                 <h1 className="text-xl font-semibold">{isSigninForm ? "Sign In" : "Sign Up"}</h1>
                 {!isSigninForm &&
                     <input
-                        ref={name}
-                        type="text"
-                        placeholder="name"
+                        // ref={name}
+                        type="name"
+                        placeholder="Name"
                         className=" p-3 my-2 w-full rounded-md bg-gray-700"
                     />}
                 <input
