@@ -1,21 +1,37 @@
-import { signOut } from "firebase/auth";
-import React from "react";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import React, { useEffect } from "react";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { adduser, removeUser } from "../utils/userSlice";
 
 const Header = () => {
+
+    const dispatch = useDispatch();
 
     const user = useSelector((store) => store.user);
     const navigate = useNavigate();
     const handleSignOut = () => {
         signOut(auth).then(() => {
-            navigate("/");
         }).catch((error) => {
             // An error happened.
             navigate("/error")
         });
     }
+    // using fire base API to store all the values into store
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                const { uid, email, displayName } = user;
+                dispatch(adduser({ uid: uid, email: email, displayName: displayName }))
+                navigate("/browse");
+            } else {
+                // User is signed out
+                dispatch(removeUser());
+                navigate("/");
+            }
+        });
+    }, [])
 
     return (
         <div className="absolute top-1 left-6 z-10 flex justify-between w-full px-8 mx-auto">
