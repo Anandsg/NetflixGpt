@@ -1,16 +1,23 @@
 import React, { useRef, useState } from "react";
 import { checkValidateData } from "../utils/validation";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import {
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    updateProfile
+} from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import Header from "./Header";
+import { useDispatch } from "react-redux";
+import { adduser } from "../utils/userSlice";
 
 const Login = () => {
     const [isSigninForm, setIsSignInForm] = useState(true);
     const [errorMessage, setErrorMessage] = useState(null);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
-    // const name = useRef(null);
+    const name = useRef(null);
     const email = useRef(null);
     const password = useRef(null);
 
@@ -29,13 +36,24 @@ const Login = () => {
                 .then((userCredential) => {
                     // Signed up 
                     const user = userCredential.user;
+                    updateProfile(user, {
+                        displayName: name.current.value
+
+                    }).then(() => {
+                        // Profile updated!
+                        const { uid, email, displayName } = auth.currentUser;
+                        dispatch(adduser({ uid: uid, email: email, displayName: displayName }))
+                        navigate("/browse")
+                    }).catch((error) => {
+                        setErrorMessage(error.message);
+                    });
                     console.log(user);
-                    navigate("/browse")
                 })
                 .catch((error) => {
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                    setErrorMessage(errorCode + "-" + errorMessage);
+                    // const errorCode = error.code;
+                    // const errorMessage = error.message;
+                    // setErrorMessage(errorCode + "-" + errorMessage);
+                    setErrorMessage("Something went wrong.")
                 });
         } else {
             // Sign in logic
@@ -47,9 +65,10 @@ const Login = () => {
                     navigate("/browse")
                 })
                 .catch((error) => {
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                    setErrorMessage(errorCode + " - " + errorMessage);
+                    // const errorCode = error.code;
+                    // const errorMessage = error.message;
+                    // setErrorMessage(errorCode + " - " + errorMessage);
+                    setErrorMessage("Please Sign up.")
                 });
         }
     };
@@ -68,7 +87,7 @@ const Login = () => {
                 <h1 className="text-xl font-semibold">{isSigninForm ? "Sign In" : "Sign Up"}</h1>
                 {!isSigninForm &&
                     <input
-                        // ref={name}
+                        ref={name}
                         type="name"
                         placeholder="Name"
                         className=" p-3 my-2 w-full rounded-md bg-gray-700"
@@ -98,7 +117,7 @@ const Login = () => {
                         Sign up now.
                     </p> :
                         <div className="flex">
-                            <p className="text-gray-400 text-sm"> Already registered? </p>
+                            <p className="text-gray-400 text-sm"> Already have an account? </p>
                             <p className="text-gray-200 text-sm cursor-pointer px-2 hover:underline"
                                 onClick={toggleSigninForm}>
                                 Sign In now.
