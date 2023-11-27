@@ -1,9 +1,14 @@
 import React from 'react'
+import { IMG_CDN_URL } from '../../utils/constants';
 
-const MovieCard = () => {
+const MovieCard = ({ posterPath }) => {
+    console.log(posterPath)
     return (
-        <div>MovieCard</div>
-    )
-}
+        <div className='w-40 pr-5 md:w-60 md:pr-6 movie-card  '>
+            <img alt='movie card'
+                src={IMG_CDN_URL + posterPath} />
+        </div>
+    );
+};
 
 export default MovieCard;
