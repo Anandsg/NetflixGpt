@@ -4,7 +4,7 @@ import { AiFillCaretRight } from "react-icons/ai";
 
 const VideoTitle = ({ title, overview }) => {
     return (
-        <div className="pt-[30%] absolute  px-20 w-screen aspect-video bg-gradient-to-br from-black text-white">
+        <div className="pt-[23%] absolute  px-20 w-screen aspect-video bg-gradient-to-br from-black text-white">
             <h1 className="font-bold text-3xl">{title}</h1>
             <p className="py-6 text-md w-1/3 text-sm">{overview}</p>
             <div className="flex">

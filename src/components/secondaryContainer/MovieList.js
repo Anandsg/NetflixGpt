@@ -1,13 +1,14 @@
 import React from 'react';
 import MovieCard from './MovieCard';
+import './MovieList.css';
 
 const MovieList = ({ title, movies }) => {
     console.log(movies);
     return (
-        <div className='p-6 text-white bg-black' style={{ top: '780px', position: 'relative', right: '0px', left: '0px' }}>
-            <h1 className='md:text-3xl font-semibold p-5 text-2xl text-white'>{title}</h1>
-            <div className='flex p-5 flex-row overflow-x-scroll no-scrollbar'>
-                <div className='flex flex-row'>
+        <div className='p-2 bg-black' style={{ top: '600px', position: 'relative' }}>
+            <h1 className='md:text-2xl font-semibold p-2 text-2xl text-white'>{title}</h1>
+            <div className='flex p-2 flex-row overflow-x-scroll overflow-hidden scrollbar'>
+                <div className='flex'>
                     {movies && movies.length > 0 ? (
                         movies.map((movie, index) => (
                             <MovieCard id={movie?.id} posterPath={movie?.poster_path} key={index} />
