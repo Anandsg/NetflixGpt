@@ -8,10 +8,11 @@ const VideoBackground = ({ movieId }) => {
 
     useMovieTrailer(movieId);
     return (
-        <div className="w-screen ">
+        <div className="w-screen">
             <iframe
                 className="w-screen aspect-video absolute "
-                src={"https://www.youtube.com/embed/ftUpFjGKuY0?si=" + trailerVideo?.key + "?&autoplay=1&mute=1"}
+                // removed 1&mute=1 add it
+                src={"https://www.youtube.com/embed/ftUpFjGKuY0?si=" + trailerVideo?.key + "?&autoplay="}
                 title="YouTube video player"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
             </iframe>
