@@ -5,7 +5,6 @@ import useMovieTrailer from "../hooks/useMovieTrailer";
 
 const VideoBackground = ({ movieId }) => {
     const trailerVideo = useSelector(store => store.movies?.trailerVideo)
-
     useMovieTrailer(movieId);
     return (
         <div className="w-screen">
@@ -19,5 +18,7 @@ const VideoBackground = ({ movieId }) => {
         </div>
     );
 };
+
+// https://www.youtube.com/embed/ftUpFjGKuY0?si=MAZuGdi32bk
 
 export default VideoBackground;

@@ -82,7 +82,7 @@ const Header = () => {
                         onClick={toggleDropDown}
                     />
                     {isDropDownOpen && (
-                        <div className="absolute bg-gray-800 text-gray-300 mt-10 w-60 right-10 p-2 rounded-lg shadow-lg ">
+                        <div className="absolute bg-gray-800 text-gray-300 mt-12 w-60 right-10 p-2 rounded-lg shadow-lg ">
                             <ul className="list-none p-0">
                                 <li className="text-sm py-2 px-3 border-b border-gray-600">Hello {userName}</li>
                                 <li className="text-sm py-2 px-3 border-b border-gray-600">
