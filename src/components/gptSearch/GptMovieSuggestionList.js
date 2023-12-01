@@ -4,7 +4,7 @@ import '../secondaryContainer/MovieList.css';
 
 const GptMovieSuggestionList = ({ title, movies }) => {
     return (
-        <div className='py-1 p-4 bg-black w-screen'>
+        <div className='py-1 p-4 bg-black w-scree  bg-opacity-60'>
             <h1 className='md:text-2xl font-semibold p-2 text-2xl text-white'>{title}</h1>
             <div className='flex p-2 flex-row overflow-x-scroll overflow-hidden scrollbar'>
                 <div className='flex'>
