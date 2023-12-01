@@ -19,6 +19,4 @@ const VideoBackground = ({ movieId }) => {
     );
 };
 
-// https://www.youtube.com/embed/ftUpFjGKuY0?si=MAZuGdi32bk
-
 export default VideoBackground;
