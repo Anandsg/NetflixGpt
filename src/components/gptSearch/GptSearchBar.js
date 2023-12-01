@@ -51,24 +51,32 @@ const GptSearchBar = () => {
     };
 
     return (
-        <div className="pt-[17%] flex justify-center ">
-
-            <form className="w-1/2 grid grid-cols-12 gap-4 ml-28"
-                onSubmit={(e) => e.preventDefault()}>
-
+        <div>
+            <div className="pt-[12%] flex justify-center">
+                <h2 className="text-3xl md:text-2xl font-semibold text-gray-100 flex my-14">
+                    Let AI be your Movie Guru!
+                </h2>
+            </div>
+            <form
+                className="w-1/2 grid grid-cols-12 gap-4 ml-[30%]"
+                onSubmit={(e) => e.preventDefault()}
+            >
                 <input
                     ref={searchText}
                     className="col-span-8 p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
                     type="text"
                     placeholder={language[langKey].gptSearchPlaceholider}
                 />
-                <button className="col-span-2 p-3 text-white bg-red-600 rounded-lg hover:bg-red-700 focus:outline-none focus:ring focus:border-blue-300"
-                    onClick={handleGptSearchClick}>
+                <button
+                    className="col-span-2 p-3 text-white bg-red-600 rounded-lg hover:bg-red-700 focus:outline-none focus:ring focus:border-blue-300"
+                    onClick={handleGptSearchClick}
+                >
                     {language[langKey].search}
                 </button>
             </form>
         </div>
     );
+
 };
 
 export default GptSearchBar;
