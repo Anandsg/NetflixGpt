@@ -1,6 +1,6 @@
 import React from "react";
 import VideoBackground from "./VideoBackground";
-import VideoTitlt from "./VideoTitle";
+import VideoTitle from "./VideoTitle";
 import { useSelector } from "react-redux";
 const MainContainer = () => {
 
@@ -10,12 +10,12 @@ const MainContainer = () => {
     const mainMovie = movies[0];
     // console.log(mainMovie);
     const { original_title, overview, id } = mainMovie;
-    // console.log(id);
+    console.log(id);
 
     return (
         <div className="pt-[15%] bg-black md:pt-0">
-            <VideoBackground />
-            <VideoTitlt title={original_title} overview={overview} movieId={id} />
+            <VideoBackground movieId={id} />
+            <VideoTitle title={original_title} overview={overview} />
         </div>
     );
 };
