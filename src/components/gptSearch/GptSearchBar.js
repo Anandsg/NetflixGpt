@@ -52,13 +52,13 @@ const GptSearchBar = () => {
 
     return (
         <div>
-            <div className="pt-[12%] flex justify-center">
-                <h2 className="text-3xl md:text-2xl font-semibold text-gray-100 flex my-14">
+            <div className="pt-[15%] md:pt-[12%] flex justify-center">
+                <h2 className="text-lg md:text-2xl font-semibold text-gray-100  flex my-11 md:my-14">
                     Let AI be your Movie Guru!
                 </h2>
             </div>
             <form
-                className="w-1/2 grid grid-cols-12 gap-4 ml-[30%]"
+                className="w-full ml-4 p-3 md:w-1/2 grid grid-cols-12 gap-4 md:ml-[30%]"
                 onSubmit={(e) => e.preventDefault()}
             >
                 <input
@@ -68,7 +68,7 @@ const GptSearchBar = () => {
                     placeholder={language[langKey].gptSearchPlaceholider}
                 />
                 <button
-                    className="col-span-2 p-3 text-white bg-red-600 rounded-lg hover:bg-red-700 focus:outline-none focus:ring focus:border-blue-300"
+                    className="col-span-3 md:col-span-2 p-3 text-white bg-red-600 rounded-lg hover:bg-red-700 focus:outline-none focus:ring focus:border-blue-300"
                     onClick={handleGptSearchClick}
                 >
                     {language[langKey].search}

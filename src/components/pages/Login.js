@@ -76,11 +76,12 @@ const Login = () => {
     return (
         <div>
             <Header />
-            <div className="brightness-50 absolute">
-                <img className="" src={BG_URL}
+            <div className="brightness-50 fixed">
+                <img className="h-screen object-cover md:w-screen md:h-screen" src={BG_URL}
                     alt="bg" />
             </div>
-            <form onSubmit={(e) => e.preventDefault()} className="bg-black bg-opacity-70 text-white w-3/12 absolute p-12 my-40 mx-auto right-0 left-0">
+            <form onSubmit={(e) => e.preventDefault()}
+                className="bg-black bg-opacity-70 text-white w-full md:w-3/12 absolute p-8 md:p-12 my-40 md:mx-auto right-0 left-0">
                 <h1 className="text-xl font-semibold">{isSigninForm ? "Sign In" : "Sign Up"}</h1>
                 {!isSigninForm &&
                     <input
