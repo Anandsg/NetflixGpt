@@ -4,10 +4,9 @@ import { useEffect } from "react";
 import { API_OPTIONS } from "../../utils/constants";
 
 const useMovieTrailer = (movieId) => {
-    console.log(movieId)
     const dispatch = useDispatch();
 
-    // Memoization to avoid unnecessary API 
+    // Memoization to avoid unnecessary API calls
     const trailerVideo = useSelector(store => store.movies.trailerVideo);
 
     // fetching the trailer video and updating the store with trailerVideo data
@@ -18,11 +17,9 @@ const useMovieTrailer = (movieId) => {
             + "/videos?language=en-US",
             API_OPTIONS)
         const json = await data.json();
-        console.log(json);
 
         const filterData = json.results.filter((video) => video.type === "Trailer");
         const trailer = filterData.length ? filterData[0] : json.results[0];
-        // console.log(trailer);
         dispatch(addTrailerVideo(trailer));
     };
 

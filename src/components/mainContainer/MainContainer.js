@@ -8,10 +8,7 @@ const MainContainer = () => {
     if (movies === null) return;
 
     const mainMovie = movies[0];
-    // console.log(mainMovie);
     const { original_title, overview, id } = mainMovie;
-    console.log(id);
-
     return (
         <div className="pt-[15%] bg-black md:pt-0">
             <VideoBackground movieId={id} />

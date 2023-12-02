@@ -52,7 +52,6 @@ const Header = () => {
     }
 
     const handleLanguageChange = (e) => {
-        // console.log(e.target.value)
         dispatch(changeLanguage(e.target.value));
     }
     return (
@@ -65,12 +64,12 @@ const Header = () => {
                         src={LOGO_URL}
                         alt="logo"
                     />
-                    <div className="gap-6 ml-4 text-white text-sm hidden md:flex cursor-pointer text-left">
+                    {user && <div className="gap-6 ml-4 text-white text-sm hidden md:flex cursor-pointer text-left">
                         <p>Home</p>
                         <p>TV Shows</p>
                         <p>Movies</p>
                         <p>Web series</p>
-                    </div>
+                    </div>}
                 </div>
                 {user &&
                     <div className="flex p-2 m-2">
@@ -106,7 +105,8 @@ const Header = () => {
                                 </ul>
                             </div>
                         )}
-                    </div>}
+                    </div>
+                }
             </div>
         </>
     );

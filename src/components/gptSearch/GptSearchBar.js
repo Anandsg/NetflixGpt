@@ -22,6 +22,7 @@ const GptSearchBar = () => {
     };
     const handleGptSearchClick = async () => {
         setLoading(true);
+
         // Make an API call to GPT ai to fetch movie results
         const gptQuery =
             "Act as a movie recommendation system and suggest some movies for the query : " +
@@ -34,9 +35,7 @@ const GptSearchBar = () => {
         });
 
         if (!gptResults.choices || !gptResults.choices[0]?.message?.current) {
-            //  console.log("Movie not present"); // Handle the error
         }
-        console.log(gptResults.choices[0]?.message?.content);
 
         const gptMovies = gptResults.choices[0]?.message?.content.split(",");
 

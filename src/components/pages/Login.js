@@ -22,9 +22,6 @@ const Login = () => {
 
     // Form validation
     const handleValidationBtn = () => {
-        // console.log(email.current.value);
-        // console.log(password.current.value);
-        // const nameValue = name.current ? name.current.value : null
         const message = checkValidateData(email.current.value, password.current.value);
         setErrorMessage(message);
         if (message) return;
@@ -45,7 +42,7 @@ const Login = () => {
                     }).catch((error) => {
                         setErrorMessage(error.message);
                     });
-                    // console.log(user);
+
                 })
                 .catch((error) => {
                     // const errorCode = error.code;
@@ -59,7 +56,6 @@ const Login = () => {
                 .then((userCredential) => {
                     // Signed in 
                     const user = userCredential.user;
-                    // console.log(user);
                 })
                 .catch((error) => {
                     // const errorCode = error.code;

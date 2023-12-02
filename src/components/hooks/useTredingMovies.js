@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 const useTredingMovies = () => {
 
-    // Memoization to avoid unnecessary API 
+    // Memoization to avoid unnecessary API calls
     const tredingMovies = useSelector(store => store.movies.TrendingMovies);
     const dispatch = useDispatch();
     const getTrendingMovies = async () => {

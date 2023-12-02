@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 const useNowPlayingMovies = () => {
 
-    // Memoization to avoid unnecessary API 
+    // Memoization to avoid unnecessary API calls
     const nowPlayingMovies = useSelector(store => store.movies.nowPlayingMovies);
 
     const dispatch = useDispatch();
@@ -15,7 +15,6 @@ const useNowPlayingMovies = () => {
                 API_OPTIONS
             );
         const json = await data.json();
-        // console.log(json.results);
         dispatch(addNowPlayingMovies(json.results))
     };
 
