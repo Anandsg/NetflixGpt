@@ -74,7 +74,7 @@ Live Demo : [Live Demo]("Live Demo")
 
 - Signin Page
 
-  ![Signin Page](![Alt text](<Screenshot 2023-12-02 at 11.50.07 AM.png>))
+  ![Signin Page](https://github.com/Anandsg/NetflixGpt/blob/main/public/screenshot/01-signin.png)
 
 - Signup Page
 
