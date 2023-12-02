@@ -78,23 +78,23 @@ Live Demo : [Live Demo]("Live Demo")
 
 - Signup Page
 
-  ![Signup Page](![Alt text](<Screenshot 2023-12-02 at 11.50.59 AM.png>))
+  ![Signup Page](https://github.com/Anandsg/NetflixGpt/blob/main/public/screenshot/02-signup.png)
 
 - Browse Page
 
-  ![Browse Page](![Alt text](<Screenshot 2023-12-02 at 11.52.03 AM.png>))
+  ![Browse Page](https://github.com/Anandsg/NetflixGpt/blob/main/public/screenshot/03-browse.png)
 
 - Movie List
 
-  ![Movie List](![Alt text](<Screenshot 2023-12-02 at 11.52.51 AM.png>))
+  ![Movie List](https://github.com/Anandsg/NetflixGpt/blob/main/public/screenshot/04-movieList.png)
 
 - Search Page
 
-  ![Search Page](![Alt text](<Screenshot 2023-12-02 at 11.53.35 AM.png>))
+  ![Search Page](https://github.com/Anandsg/NetflixGpt/blob/main/public/screenshot/05-searchMovies.png)
 
 - Movie results page
 
-  ![Movie results](![Alt text](<Screenshot 2023-12-02 at 11.54.11 AM.png>))
+  ![Movie results](https://github.com/Anandsg/NetflixGpt/blob/main/public/screenshot/06-movieSuggestions.png)
 
 `<Happy coding />`
 
