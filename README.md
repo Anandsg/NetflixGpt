@@ -68,7 +68,7 @@ npm start
 
 ## Screen Shot
 
-Live Demo : [Live Demo]("Live Demo")
+Live Demo : [Click Here](https://netflixgpt-in.netlify.app/)
 
 ## Screen Shot
 
