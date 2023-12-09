@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { checkValidateData } from "../../utils/validation";
 import {
     createUserWithEmailAndPassword,
@@ -6,10 +6,10 @@ import {
     updateProfile
 } from "firebase/auth";
 import { auth } from "../../utils/firebase";
-import Header from "./Header";
 import { useDispatch } from "react-redux";
 import { adduser } from "../store/userSlice";
 import { BG_URL } from "../../utils/constants";
+import Header from '../../components/pages/Header';
 
 const Login = () => {
     const [isSigninForm, setIsSignInForm] = useState(true);
@@ -20,51 +20,67 @@ const Login = () => {
     const email = useRef(null);
     const password = useRef(null);
 
-    // Form validation
+    const defaultEmail = "test@gmail.com";
+    const defaultPassword = "Welcome3$";
+
+    useEffect(() => {
+        email.current.value = defaultEmail;
+        password.current.value = defaultPassword;
+    }, []);
+
     const handleValidationBtn = () => {
-        const message = checkValidateData(email.current.value, password.current.value);
-        setErrorMessage(message);
-        if (message) return;
+        const userEmail = email.current.value;
+        const userPassword = password.current.value;
 
-        if (!isSigninForm) {
-            // Sign up logic
-            createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+        const isDefaultEmail = userEmail === defaultEmail;
+        const isDefaultPassword = userPassword === defaultPassword;
+
+        if (isDefaultEmail && isDefaultPassword) {
+            signInWithEmailAndPassword(auth, defaultEmail, defaultPassword)
                 .then((userCredential) => {
-                    // Signed up 
-                    const user = userCredential.user;
-                    updateProfile(user, {
-                        displayName: name.current.value
-
-                    }).then(() => {
-                        // Profile updated!
-                        const { uid, email, displayName } = auth.currentUser;
-                        dispatch(adduser({ uid: uid, email: email, displayName: displayName }))
-                    }).catch((error) => {
-                        setErrorMessage(error.message);
-                    });
-
-                })
-                .catch((error) => {
-                    // const errorCode = error.code;
-                    // const errorMessage = error.message;
-                    // setErrorMessage(errorCode + "-" + errorMessage);
-                    setErrorMessage("Something went wrong.")
-                });
-        } else {
-            // Sign in logic
-            signInWithEmailAndPassword(auth, email.current.value, password.current.value)
-                .then((userCredential) => {
-                    // Signed in 
                     const user = userCredential.user;
                 })
                 .catch((error) => {
-                    // const errorCode = error.code;
-                    // const errorMessage = error.message;
-                    // setErrorMessage(errorCode + " - " + errorMessage);
                     setErrorMessage("Please Sign up.")
                 });
+        } else {
+            const message = checkValidateData(userEmail, userPassword);
+            setErrorMessage(message);
+            if (message) return;
+
+            if (!isSigninForm) {
+
+                createUserWithEmailAndPassword(auth, userEmail, userPassword)
+                    .then((userCredential) => {
+
+                        const user = userCredential.user;
+                        updateProfile(user, {
+                            displayName: name.current.value
+                        }).then(() => {
+
+                            const { uid, email, displayName } = auth.currentUser;
+                            dispatch(adduser({ uid: uid, email: email, displayName: displayName }))
+                        }).catch((error) => {
+                            setErrorMessage(error.message);
+                        });
+                    })
+                    .catch((error) => {
+                        setErrorMessage("Something went wrong.")
+                    });
+            } else {
+
+                signInWithEmailAndPassword(auth, userEmail, userPassword)
+                    .then((userCredential) => {
+
+                        const user = userCredential.user;
+                    })
+                    .catch((error) => {
+                        setErrorMessage("Please Sign up.")
+                    });
+            }
         }
     };
+
 
     const toggleSigninForm = () => {
         setIsSignInForm(!isSigninForm)
