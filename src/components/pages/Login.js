@@ -20,7 +20,7 @@ const Login = () => {
     const email = useRef(null);
     const password = useRef(null);
 
-    const defaultEmail = "test@gmail.com";
+    const defaultEmail = "demo@gmail.com";
     const defaultPassword = "Welcome3$";
 
     useEffect(() => {
@@ -80,7 +80,6 @@ const Login = () => {
             }
         }
     };
-
 
     const toggleSigninForm = () => {
         setIsSignInForm(!isSigninForm)
