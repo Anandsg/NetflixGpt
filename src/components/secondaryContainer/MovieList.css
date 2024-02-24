@@ -1,9 +1,9 @@
 .scrollbar {
   scrollbar-color: black;
-  scrollbar-width: thin;
 }
 
 .scrollbar::-webkit-scrollbar {
+  display: none;
   width: 0px;
 }
 
